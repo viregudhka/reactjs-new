@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>User Details</title>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+	<style>
+		table {
+			margin: 0 auto;
+		}
+
+		td {
+			background-color: #fff;
+			border: 1px solid black;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			padding: 10px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<section>
+		<h1>GeeksForGeeks</h1>
+
+		<table id='table'>
+			<tr>
+				<th>Sr No.</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>User Name</th>
+                <th>Phone</th>
+                <th>website</th>
+			</tr>
+
+			<script>
+				$(document).ready(function () {
+
+					// FETCHING DATA FROM JSON FILE
+					$.getJSON("https://jsonplaceholder.typicode.com/users",
+							function (data) {
+						var user = '';
+						$.each(data, function (key, value) {
+							user += '<tr>';
+							user += '<td>' +
+								value.id + '</td>';
+
+							user += '<td>' +
+								value.name + '</td>';
+
+							user += '<td>' +
+								value.email + '</td>';
+
+							user += '<td>' +
+								value.username + '</td>';
+
+                            user += '<td>' +
+                            value.phone + '</td>';
+
+                            user += '<td>' +
+                            value.website + '</td>';
+
+							user += '</tr>';
+						});
+						$('#table').append(user);
+					});
+				});
+			</script>
+	</section>
+</body>
+
+</html>
